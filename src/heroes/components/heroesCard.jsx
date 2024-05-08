@@ -28,7 +28,7 @@ export const HeroesCard = ({ hero }) => {
 
                         <div className='card-body'>
 
-                            <h5 className='card-title'>{hero.superhero}</h5>
+                            <h5 className='card-title' aria-label='buscarHero'>{hero.superhero}</h5>
                             <p className='card-text'>{hero.alter_ego}</p>
                             {(hero.alter_ego !== hero.characters) && (<p>{hero.characters}</p>)}
                             <p className='card-text'>

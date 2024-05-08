@@ -8,12 +8,14 @@ import { HeroesCard } from '../components';
 export const SearchPage = () => {
 
     const { searchText, OnInputchange } = UseForm({
+
         searchText: '',
     });
     const navigate = useNavigate();
     const location = useLocation();
     const { q = '' } = queryString.parse(location.search);
     const onSearchSubmit = (event) => {
+        console.log('desde testing');
         event.preventDefault();
         if (searchText.trim().length <= 1) return;
         navigate(`?q=${searchText}`);
@@ -36,7 +38,7 @@ export const SearchPage = () => {
 
                     <h4 style={{ display: showSearch || showHeroNotFound ? '' : 'none' }}>Searching...</h4>
                     <hr />
-                    <form onSubmit={onSearchSubmit}>
+                    <form onSubmit={onSearchSubmit} aria-label='formulario'>
                         <input
                             type='text'
                             placeholder='Search a hero'
@@ -46,7 +48,7 @@ export const SearchPage = () => {
                             value={searchText}
                             onChange={OnInputchange}
                         />
-                        <button className='btn btn-outline-primary mt-1'>
+                        <button className='btn btn-outline-primary mt-1' aria-label='botonsub'>
                             Search
                         </button>
                     </form>
@@ -56,12 +58,14 @@ export const SearchPage = () => {
                     <hr />
 
                     <div
+                        aria-label='searchAHeroAlert'
                         className='alert alert-primary animate__animated animate__fadeIn'
                         style={{ display: showSearch ? '' : 'none' }}
                     >
                         Search a hero
                     </div>
                     <div
+                        aria-label='notFoundAlert'
                         className='alert alert-danger animate__animated animate__shakeX'
                         style={{ display: showHeroNotFound ? '' : 'none' }}
                     >
